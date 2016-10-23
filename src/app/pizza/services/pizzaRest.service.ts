@@ -13,7 +13,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class PizzaRestService extends RestService implements PizzaService {
 
-  private _baseUrl: string = 'https://good-pizza.herokuapp.com/rest/pizzas';
+  private _baseUrl: string = 'https://server-restauranto.herokuapp.com/rest/pizzas';
   private _url: string;
 
   constructor(private _http: Http,
