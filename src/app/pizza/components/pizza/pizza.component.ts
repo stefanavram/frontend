@@ -1,12 +1,11 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Pizza} from '../../domain/pizza';
-import {PIZZA_SERVICE, PizzaService} from '../../services/pizza.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-pizza',
-  templateUrl: 'pizza.component.html',
-  styleUrls: ['pizza.component.css'],
+  templateUrl: './pizza.component.html',
+  styleUrls: ['./pizza.component.css'],
 })
 export class PizzaComponent implements OnInit {
 

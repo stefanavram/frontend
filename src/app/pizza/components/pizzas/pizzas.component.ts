@@ -5,8 +5,8 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-pizzas',
-  templateUrl: 'pizzas.component.html',
-  styleUrls: ['pizzas.component.css'],
+  templateUrl: './pizzas.component.html',
+  styleUrls: ['./pizzas.component.css'],
 })
 export class PizzasComponent {
 

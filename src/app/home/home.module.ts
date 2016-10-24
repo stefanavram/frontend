@@ -6,6 +6,7 @@ import {HomeComponent} from './home.component';
 import {MaterialModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
 import {ROUTES} from './home.routes';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {ROUTES} from './home.routes';
     CommonModule,
     BrowserModule,
     MaterialModule.forRoot(),
+    NgbModule,
     RouterModule.forChild(ROUTES)
   ],
   exports: [
