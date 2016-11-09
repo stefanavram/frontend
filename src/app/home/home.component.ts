@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
+import {TranslateService} from 'ng2-translate';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,14 @@ import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 })
 export class HomeComponent implements OnInit {
 
+
+  constructor(private translate: TranslateService) {
+    translate.addLangs(['en', 'ro']);
+    translate.setDefaultLang('en');
+
+    let browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|ro/) ? browserLang : 'en');
+  }
 
 
   isDarkTheme: boolean = false;
@@ -21,13 +30,7 @@ export class HomeComponent implements OnInit {
 
   progress: number = 0;
 
-  constructor(config: NgbCarouselConfig) {
-    config.interval = 10000;
-    config.wrap = false;
-    config.keyboard = false;
-  }
-
-
   ngOnInit() {
+
   }
 }

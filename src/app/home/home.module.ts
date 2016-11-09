@@ -7,6 +7,7 @@ import {MaterialModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
 import {ROUTES} from './home.routes';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {TranslateModule} from 'ng2-translate';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     MaterialModule.forRoot(),
     NgbModule,
-    RouterModule.forChild(ROUTES)
+    RouterModule.forChild(ROUTES),
+    TranslateModule
   ],
   exports: [
     HomeComponent

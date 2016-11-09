@@ -18,8 +18,17 @@
   </md-menu>
 
   <div class="app-content">
-
-    <h3>A few words about Restauranto</h3>
+    <div>
+      <h2>{{ 'HOME.TITLE' | translate }}</h2>
+      <label>
+        {{ 'HOME.SELECT' | translate }}
+        <select #langSelect (change)="translate.use(langSelect.value)">
+          <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">
+            {{ lang }}
+          </option>
+        </select>
+      </label>
+    </div>
     <md-card>
       <md-card-title>titut</md-card-title>
 
