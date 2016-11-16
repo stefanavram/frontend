@@ -10,15 +10,7 @@ import {TranslateService} from 'ng2-translate';
 })
 export class HomeComponent implements OnInit {
 
-
-  constructor(private translate: TranslateService) {
-    translate.addLangs(['en', 'ro']);
-    translate.setDefaultLang('en');
-
-    let browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|ro/) ? browserLang : 'en');
-  }
-
+  images: any[];
 
   isDarkTheme: boolean = false;
 
@@ -30,7 +22,24 @@ export class HomeComponent implements OnInit {
 
   progress: number = 0;
 
+
+  constructor(private translate: TranslateService) {
+    translate.addLangs(['en', 'ro']);
+    translate.setDefaultLang('en');
+
+    let browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|ro/) ? browserLang : 'en');
+  }
+
+
   ngOnInit() {
+    this.images = [];
+    this.images.push({
+      source: 'assets/images/pepperoni.png',
+      alt: 'Description for Image 1',
+      title: 'Title 1'
+    });
+
 
   }
 }

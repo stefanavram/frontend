@@ -7,4 +7,5 @@
   <div id="image" class="image">
     <img [src]="pizza.image">
   </div>
+  <app-reviews [reviews]="pizza.reviews" (addReview)="addReview($event)"></app-reviews>
 </div>

@@ -8,6 +8,7 @@ import {RouterModule} from '@angular/router';
 import {ROUTES} from './home.routes';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule} from 'ng2-translate';
+import {GalleriaModule} from 'primeng/components/galleria/galleria';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {TranslateModule} from 'ng2-translate';
     MaterialModule.forRoot(),
     NgbModule,
     RouterModule.forChild(ROUTES),
-    TranslateModule
+    TranslateModule,
+    GalleriaModule
   ],
   exports: [
     HomeComponent

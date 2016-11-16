@@ -51,34 +51,13 @@
 
     </md-card>
 
-    <ngb-carousel>
-      <template ngbSlide>
-        <img src="assets/images/pepperoni.png" alt="Random first slide">
-        <div class="carousel-caption">
-          <h3>10 seconds between slides...</h3>
-          <p>This carousel uses customized default values.</p>
-        </div>
-      </template>
-      <template ngbSlide>
-        <img src="assets/images/pepperoni.png" alt="Random second slide">
-        <div class="carousel-caption">
-          <h3>No keyboard...</h3>
-          <p>This carousel uses customized default values.</p>
-        </div>
-      </template>
-      <template ngbSlide>
-        <img src="assets/images/pepperoni.png" alt="Random third slide">
-        <div class="carousel-caption">
-          <h3>And no wrap after last slide.</h3>
-          <p>This carousel uses customized default values.</p>
-        </div>
-      </template>
-    </ngb-carousel>
 
 
   </div>
 
 </md-sidenav-layout>
+
+<p-galleria [images]="images" panelWidth="500" panelHeight="313" showCaption="true" ></p-galleria>
 
 <span class="app-action" [class.m2app-dark]="isDarkTheme">
   <button md-fab><md-icon>check circle</md-icon></button>
