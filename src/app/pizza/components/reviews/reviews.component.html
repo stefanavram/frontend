@@ -10,7 +10,7 @@
   </blockquote>
   <h4>Submit a review</h4>
   <form class="new" (ngSubmit)="onSubmit()" #newForm="ngForm">
-    <select class="form-control" [(ngModel)]="newReview.stars" required>
+    <select class="form-control" [(ngModel)]="newReview.stars" [ngModelOptions]="{standalone: true}" required>
       <option disabled>Rate the Product</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -19,12 +19,10 @@
       <option value="5">5</option>
     </select>
     <textarea placeholder="Write a short review for the pizza..." class="form-control"
-              [(ngModel)]="newReview.body"></textarea>
-    <input type="email" placeholder="jimmyDean@example.org" class="form-control" [(ngModel)]="newReview.author"
+              [(ngModel)]="newReview.body" [ngModelOptions]="{standalone: true}"></textarea>
+    <input type="email" placeholder="jimmyDean@example.org" class="form-control"
+           [(ngModel)]="newReview.author" [ngModelOptions]="{standalone: true}"
            #author="ngModel" required>
-    <div class="alert error hide" [class.hide]="author.valid || author.pristine">
-      Author is requried!
-    </div>
     <button type="submit" class="flat right submit" [disabled]="!newForm.form.valid">Submit Review</button>
   </form>
 </div>

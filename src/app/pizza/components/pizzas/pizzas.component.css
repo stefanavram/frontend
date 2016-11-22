@@ -5,6 +5,10 @@ button.flat {
   cursor: pointer;
 }
 
+h1, h2, h3 {
+  color: #71a0c8;
+}
+
 button.flat:hover {
   background: #e6e3e3;
 }
@@ -61,7 +65,7 @@ textarea.form-control {
   height: auto;
 }
 
-.right{
+.right {
   align-self: flex-end;
 }
 
@@ -102,6 +106,6 @@ button.submit[disabled] {
   opacity: 0;
 }
 
-.error{
+.error {
   color: #a94442;
 }

@@ -13,11 +13,11 @@ export abstract class RestService {
       .catch(this.handleError);
   }
 
-  putData<T>(body: string): Promise<T> {
+  putData<T>(body: any): Promise<T> {
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: headers});
 
-    return this.http.put(this.url, JSON.stringify(body), options)
+    return this.http.post(this.url, body, options)
       .toPromise()
       .then(this.extractData)
       .then(data => this.logData<T>('POST', data, body))
@@ -28,11 +28,11 @@ export abstract class RestService {
     return this.http;
   };
 
-  protected  get url(): string{
+  protected  get url(): string {
     return this.url;
   };
 
-  protected  get logger(): LoggerService{
+  protected  get logger(): LoggerService {
     return this.logger;
   };
 
@@ -40,7 +40,10 @@ export abstract class RestService {
     if (res.status < 200 || res.status >= 300) {
       throw new Error('Bad response status: ' + res.status);
     }
-    let body = res.json();
+    let body;
+    if (res.text()) {
+      body = res.json();
+    }
     return body || {};
   }
 
@@ -51,7 +54,7 @@ export abstract class RestService {
     return Promise.reject(errMsg);
   }
 
-  private logData<T>(operation: string, responseData: T, requestData?: string) {
+  private logData<T>(operation: string, responseData: T, requestData?: any) {
     let message = Date.now() + ': ' + operation + ' ' + this.url + '\n';
     message += (requestData ? ('---SENT---\n' + requestData + '\n') : '');
     message += (responseData ? ('---RECEIVED:---\n' + JSON.stringify(responseData) + '\n') : '');
