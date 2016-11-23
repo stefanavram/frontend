@@ -5,25 +5,66 @@
 import {Injectable}      from '@angular/core';
 import {tokenNotExpired} from 'angular2-jwt';
 import {myConfig}        from './auth.config';
+import {Router} from '@angular/router';
 
 // Avoid name not found warnings
-declare var Auth0Lock: any;
+declare var Auth0: any;
 
 @Injectable()
 export class Auth {
   // Configure Auth0
-  lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {});
+  auth0 = new Auth0({
+    domain: myConfig.domain,
+    clientID: myConfig.clientID,
+    callbackOnLocationHash: true,
+    callbackURL: myConfig.callbackURL,
+  });
 
-  constructor() {
-    // Add callback for lock `authenticated` event
-    this.lock.on('authenticated', (authResult) => {
-      localStorage.setItem('id_token', authResult.idToken);
-    });
+  constructor(private router: Router) {
+    let result = this.auth0.parseHash(window.location.hash);
+
+    if (result && result.idToken) {
+      localStorage.setItem('id_token', result.idToken);
+      this.router.navigate(['/home']);
+    } else if (result && result.error) {
+      alert('error: ' + result.error);
+    }
   }
 
-  public login() {
-    // Call the show method to display the widget.
-    this.lock.show();
+  public signUp(username, password) {
+    this.auth0.signup({
+      connection: 'Username-Password-Authentication',
+      responseType: 'token',
+      email: username,
+      password: password,
+    }, function (err) {
+      if (err) {
+        alert('something went wrong: ' + err.message);
+      }
+    });
+  };
+
+  public login(username, password) {
+    this.auth0.login({
+      connection: 'Username-Password-Authentication',
+      responseType: 'token',
+      email: username,
+      password: password,
+    }, function (err) {
+      if (err) {
+        alert('something went wrong: ' + err.message);
+      }
+    });
+  };
+
+  public googleLogin() {
+    this.auth0.login({
+      connection: 'google-oauth2'
+    }, function (err) {
+      if (err) {
+        alert('something went wrong: ' + err.message);
+      }
+    });
   };
 
   public authenticated() {

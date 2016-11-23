@@ -11,9 +11,11 @@ import {ROUTES} from './app.routes';
 import {RouterModule} from '@angular/router';
 import {ReservationModule} from './reservation/reservation.module';
 import {TranslateModule, TranslateStaticLoader, TranslateLoader} from 'ng2-translate';
+import {LoginComponent} from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
   ],
   imports: [
     RouterModule.forRoot(ROUTES),
