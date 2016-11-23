@@ -8,18 +8,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Auth } from './common/auth.service';
 export var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(auth) {
+        this.auth = auth;
         this.title = 'app works!';
     }
     AppComponent = __decorate([
         Component({
             selector: 'app-root',
             encapsulation: ViewEncapsulation.None,
+            providers: [Auth],
             templateUrl: './app.component.html',
             styleUrls: ['./app.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [Auth])
     ], AppComponent);
     return AppComponent;
 }());
