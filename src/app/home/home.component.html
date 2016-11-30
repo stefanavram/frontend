@@ -1,15 +1,23 @@
 <md-sidenav-layout [class.m2app-dark]="isDarkTheme">
 
+  <div class="app-translate-bar">
+    <label>
+      {{ 'HOME.SELECT' | translate }}
+      <select #langSelect (change)="translate.use(langSelect.value)">
+        <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">
+          {{ lang }}
+        </option>
+      </select>
+    </label>
+  </div>
 
   <md-toolbar color="primary">
     <span class="app-toolbar-menu">Restauranto</span>
-    <button md-button [md-menu-trigger-for]="menu">MENU</button>
-    <button md-button [routerLink]="['/reservation']">Reservation</button>
+    <button md-button [md-menu-trigger-for]="menu">Meniu</button>
+    <button md-button [routerLink]="['/reservation']">Rezervare</button>
     <span class="app-toolbar-filler"></span>
-    <button md-button (click)="isDarkTheme = !isDarkTheme">TOGGLE Dark theme</button>
-
+    <button md-button (click)="isDarkTheme = !isDarkTheme">Activeaza Dark Theme</button>
   </md-toolbar>
-
 
   <md-menu #menu="mdMenu">
     <button md-menu-item [routerLink]="['/pizzas']">Pizza</button>
@@ -18,19 +26,13 @@
   </md-menu>
 
   <div class="app-content">
+
     <div>
       <h2>{{ 'HOME.TITLE' | translate }}</h2>
-      <label>
-        {{ 'HOME.SELECT' | translate }}
-        <select #langSelect (change)="translate.use(langSelect.value)">
-          <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">
-            {{ lang }}
-          </option>
-        </select>
-      </label>
     </div>
+
     <md-card>
-      <md-card-title>titut</md-card-title>
+      <md-card-title>Titlu</md-card-title>
 
       <p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet mollis tortor
         congue. Sed quis mauris sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada in, tristique
@@ -50,8 +52,6 @@
       </p>
 
     </md-card>
-
-
 
   </div>
 
