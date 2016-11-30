@@ -20,17 +20,23 @@ export class HomeComponent implements OnInit {
     {name: 'French fries', rating: 'Pretty good'},
   ];
 
-  progress: number = 0;
+
+  public myInterval: number = 5000;
+  public noWrapSlides: boolean = false;
+  public slides: Array<any> = [];
 
 
   constructor(private translate: TranslateService) {
     translate.addLangs(['en', 'ro']);
     translate.setDefaultLang('en');
-
     let browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|ro/) ? browserLang : 'en');
-  }
 
+    translate.use(browserLang.match(/en|ro/) ? browserLang : 'en');
+    for (let i = 0; i < 4; i++) {
+      this.addSlide();
+    }
+
+  }
 
   ngOnInit() {
     this.images = [];
@@ -39,7 +45,20 @@ export class HomeComponent implements OnInit {
       alt: 'Description for Image 1',
       title: 'Title 1'
     });
-
-
   }
+
+
+  public addSlide(): void {
+    let newWidth = 600 + this.slides.length + 1;
+    this.slides.push({
+      image: `//placekitten.com/${newWidth}/300`,
+      text: `${['More', 'Extra', 'Lots of', 'Surplus'][this.slides.length % 4]}
+      ${['Cats', 'Kittys', 'Felines', 'Cutes'][this.slides.length % 4]}`
+    });
+  }
+
+  public removeSlide(index: number): void {
+    this.slides.splice(index, 1);
+  }
+
 }

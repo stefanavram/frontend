@@ -12,6 +12,7 @@ import {RouterModule} from '@angular/router';
 import {ReservationModule} from './reservation/reservation.module';
 import {TranslateModule, TranslateStaticLoader, TranslateLoader} from 'ng2-translate';
 import {LoginComponent} from './login/login.component';
+import {MaterialModule} from "@angular/material";
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +20,7 @@ import {LoginComponent} from './login/login.component';
   ],
   imports: [
     RouterModule.forRoot(ROUTES),
+    MaterialModule.forRoot(),
     TranslateModule.forRoot({
       provide: TranslateLoader,
       useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),

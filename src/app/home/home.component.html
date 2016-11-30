@@ -1,5 +1,4 @@
-<md-sidenav-layout [class.m2app-dark]="isDarkTheme">
-
+<div class="app-content">
   <div class="app-translate-bar">
     <label>
       {{ 'HOME.SELECT' | translate }}
@@ -10,55 +9,43 @@
       </select>
     </label>
   </div>
-
-  <md-toolbar color="primary">
-    <span class="app-toolbar-menu">Restauranto</span>
-    <button md-button [md-menu-trigger-for]="menu">Meniu</button>
-    <button md-button [routerLink]="['/reservation']">Rezervare</button>
-    <span class="app-toolbar-filler"></span>
-    <button md-button (click)="isDarkTheme = !isDarkTheme">Activeaza Dark Theme</button>
-  </md-toolbar>
-
-  <md-menu #menu="mdMenu">
-    <button md-menu-item [routerLink]="['/pizzas']">Pizza</button>
-    <button md-menu-item>Ciorbe</button>
-    <button md-menu-item>Deserturi</button>
-  </md-menu>
-
-  <div class="app-content">
-
-    <div>
+  <md-card>
+    <md-card-title>
       <h2>{{ 'HOME.TITLE' | translate }}</h2>
+    </md-card-title>
+
+    <p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet mollis tortor
+      congue. Sed quis mauris sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada in, tristique
+      at erat lorem ipsum dolor sit amet lorem ipsum sed consequat magna tempus veroeros lorem sed tempus aliquam
+      lorem
+      ipsum veroeros consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id justo mattis pharetra.
+      Fusce suscipit ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris sit amet magna accumsan
+      tristique. Curabitur leo nibh, rutrum eu malesuada in, tristique at erat.
+    </p>
+    <p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet mollis tortor
+      congue. Sed quis mauris sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada in, tristique
+      at erat lorem ipsum dolor sit amet lorem ipsum sed consequat magna tempus veroeros lorem sed tempus aliquam
+      lorem
+      ipsum veroeros consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id justo mattis pharetra.
+      Fusce suscipit ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris sit amet magna accumsan
+      tristique. Curabitur leo nibh, rutrum eu malesuada in, tristique at erat.
+    </p>
+  </md-card>
+  <md-card>
+    <div class="row">
+      <div class="col-md-6">
+        <carousel [interval]="myInterval" [noWrap]="noWrapSlides">
+          <slide *ngFor="let slidez of slides; let index=index"
+                 [active]="slidez.active">
+            <img [src]="slidez.image" style="margin:auto;">
+
+            <div class="carousel-caption">
+              <h4>Slide {{index}}</h4>
+              <p>{{slidez.text}}</p>
+            </div>
+          </slide>
+        </carousel>
+      </div>
     </div>
-
-    <md-card>
-      <md-card-title>Titlu</md-card-title>
-
-      <p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet mollis tortor
-        congue. Sed quis mauris sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada in, tristique
-        at erat lorem ipsum dolor sit amet lorem ipsum sed consequat magna tempus veroeros lorem sed tempus aliquam
-        lorem
-        ipsum veroeros consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id justo mattis pharetra.
-        Fusce suscipit ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris sit amet magna accumsan
-        tristique. Curabitur leo nibh, rutrum eu malesuada in, tristique at erat.
-      </p>
-      <p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet mollis tortor
-        congue. Sed quis mauris sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada in, tristique
-        at erat lorem ipsum dolor sit amet lorem ipsum sed consequat magna tempus veroeros lorem sed tempus aliquam
-        lorem
-        ipsum veroeros consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id justo mattis pharetra.
-        Fusce suscipit ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris sit amet magna accumsan
-        tristique. Curabitur leo nibh, rutrum eu malesuada in, tristique at erat.
-      </p>
-
-    </md-card>
-
-  </div>
-
-</md-sidenav-layout>
-
-<p-galleria [images]="images" panelWidth="500" panelHeight="313" showCaption="true" ></p-galleria>
-
-<span class="app-action" [class.m2app-dark]="isDarkTheme">
-  <button md-fab><md-icon>check circle</md-icon></button>
-</span>
+  </md-card>
+</div>

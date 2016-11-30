@@ -8,7 +8,7 @@ import {RouterModule} from '@angular/router';
 import {ROUTES} from './home.routes';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateModule} from 'ng2-translate';
-import {GalleriaModule} from 'primeng/components/galleria/galleria';
+import { CarouselModule } from 'ng2-bootstrap/components/carousel';
 
 @NgModule({
   declarations: [
@@ -17,11 +17,11 @@ import {GalleriaModule} from 'primeng/components/galleria/galleria';
   imports: [
     CommonModule,
     BrowserModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     NgbModule,
     RouterModule.forChild(ROUTES),
     TranslateModule,
-    GalleriaModule
+    CarouselModule
   ],
   exports: [
     HomeComponent
