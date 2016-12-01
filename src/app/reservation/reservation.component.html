@@ -1,90 +1,43 @@
-<md-card>
-  <md-checkbox>Unchecked</md-checkbox>
-  <md-checkbox [checked]="true">Checked</md-checkbox>
-  <md-checkbox [indeterminate]="true">Indeterminate</md-checkbox>
-  <md-checkbox [disabled]="true">Disabled</md-checkbox>
-</md-card>
+<div *ngIf="!auth.authenticated()">
+  <p-messages [value]="msgs"></p-messages>
+</div>
 
-<md-card>
-  <md-radio-button name="symbol">Alpha</md-radio-button>
-  <md-radio-button name="symbol">Beta</md-radio-button>
-  <md-radio-button name="symbol" disabled>Gamma</md-radio-button>
-</md-card>
+<div *ngIf="auth.authenticated()">
+  <md-card class="app-input-section">
+    <form (ngSubmit)="onSubmit()" #newForm="ngForm">
 
-<md-card class="app-input-section">
-  <md-input placeholder="First name"></md-input>
+      <md-input #name maxlength="50">
+        <md-placeholder>
+          <i class="material-icons app-input-icon">account_circle</i>Name
+        </md-placeholder>
+        <md-hint align="end">
+          {{name.characterCount}} / 50
+        </md-hint>
+      </md-input>
 
-  <md-input #nickname placeholder="Nickname" maxlength="50">
-    <md-hint align="end">
-      {{nickname.characterCount}} / 50
-    </md-hint>
-  </md-input>
 
-  <md-input>
-    <md-placeholder>
-      <i class="material-icons app-input-icon">android</i> Favorite phone
-    </md-placeholder>
-  </md-input>
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-6">
+          <p>{{"DATE"| translate}}</p>
+          <p-calendar [(ngModel)]="reservation.reservationDate" [ngModelOptions]="{standalone: true}"
+                      [showIcon]="true"></p-calendar>
+          <span style="margin-left:35px">{{reservation.reservationDate|date}}</span>
+        </div>
+      </div>
 
-  <md-input placeholder="Motorcycle model">
-        <span md-prefix>
-          <i class="material-icons app-input-icon">motorcycle</i>
-          &nbsp;
-        </span>
-  </md-input>
-</md-card>
+      <div>
+        How many persons?
+        <md-slider [(ngModel)]="reservation.persons" [ngModelOptions]="{standalone: true}" min="1" max="20"
+                   tick-interval="1" step="1"></md-slider>
+        <span> {{reservation.persons}}</span>
+      </div>
 
-<md-card>
-  <md-list class="app-list">
-    <md-list-item *ngFor="let food of foods">
-      <h3 md-line>{{food.name}}</h3>
-      <p md-line class="demo-secondary-text">{{food.rating}}</p>
-    </md-list-item>
-  </md-list>
-</md-card>
 
-<md-card>
-  <md-spinner class="app-spinner"></md-spinner>
-  <md-spinner color="accent" class="app-spinner"></md-spinner>
-</md-card>
-
-<md-card>
-  <label>
-    Indeterminate progress-bar
-    <md-progress-bar
-      class="app-progress"
-      mode="indeterminate"
-      aria-label="Indeterminate progress-bar example"></md-progress-bar>
-  </label>
-
-  <label>
-    Determinate progress bar - {{progress}}%
-    <md-progress-bar
-      class="app-progress"
-      color="accent"
-      mode="determinate"
-      [value]="progress"
-      aria-label="Determinate progress-bar example"></md-progress-bar>
-  </label>
-</md-card>
-
-<md-card>
-  <md-tab-group>
-    <md-tab>
-      <template md-tab-label>
-        Earth
-      </template>
-      <template md-tab-content>
-        <p>EARTH</p>
-      </template>
-    </md-tab>
-    <md-tab>
-      <template md-tab-label>
-        Fire
-      </template>
-      <template md-tab-content>
-        <p>FIRE</p>
-      </template>
-    </md-tab>
-  </md-tab-group>
-</md-card>
+      <md-checkbox [checked]="reservation.isWarm">{{"WARM"| translate}}
+      </md-checkbox>
+      <div class="row">
+        <button md-raised-button type="submit" color="primary" class="row">Send</button>
+      </div>
+    </form>
+  </md-card>
+</div>

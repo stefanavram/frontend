@@ -12,8 +12,6 @@ export class HomeComponent implements OnInit {
 
   images: any[];
 
-  isDarkTheme: boolean = false;
-
   foods: any[] = [
     {name: 'Pizza', rating: 'Excellent'},
     {name: 'Burritos', rating: 'Great'},
