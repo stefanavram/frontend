@@ -27,11 +27,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private translate: TranslateService) {
-    translate.addLangs(['en', 'ro']);
-    translate.setDefaultLang('en');
-    let browserLang = translate.getBrowserLang();
-
-    translate.use(browserLang.match(/en|ro/) ? browserLang : 'en');
+    //adding slides for carousel
     for (let i = 0; i < 4; i++) {
       this.addSlide();
     }

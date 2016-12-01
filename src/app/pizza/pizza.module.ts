@@ -12,6 +12,7 @@ import {ROUTES} from './pizza.routes';
 import {PizzaRestService} from './services/pizzaRest.service';
 import {PizzaResolver} from './services/pizza.resolver';
 import {ReviewsComponent} from './components/reviews/reviews.component';
+import {TranslateModule} from "ng2-translate";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {ReviewsComponent} from './components/reviews/reviews.component';
     CommonModule,
     FormsModule,
     BrowserModule,
-    RouterModule.forChild(ROUTES)
+    RouterModule.forChild(ROUTES),
+    TranslateModule
   ],
   exports: [],
   providers: [

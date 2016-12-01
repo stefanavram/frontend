@@ -1,5 +1,6 @@
-import {Component, ViewEncapsulation} from '@angular/core';
-import {Auth} from './common/auth.service';
+import {Component, ViewEncapsulation} from "@angular/core";
+import {Auth} from "./common/auth.service";
+import {TranslateService} from "ng2-translate";
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,11 @@ import {Auth} from './common/auth.service';
 })
 export class AppComponent {
 
-  constructor(private auth: Auth) {
+  constructor(private auth: Auth, private translate: TranslateService) {
+    translate.addLangs(['en', 'ro']);
+    translate.setDefaultLang('en');
+    let browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|ro/) ? browserLang : 'en');
+
   }
 }
