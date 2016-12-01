@@ -11,5 +11,7 @@
   "MENU":{
     "SOUPS": "Soups",
     "DESSERSTS": "Desserts"
-  }
+  },
+  "WARM": "Should we warm the pizza before you arrive?",
+  "DATE": "Reservation date"
 }

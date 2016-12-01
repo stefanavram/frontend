@@ -11,5 +11,7 @@
   "MENU":{
     "SOUPS": "Ciorbe",
     "DESSERSTS": "Deserturi"
-  }
+  },
+  "WARM": "Sa incalzim pizza inainte de a ajunge?",
+  "DATE": "Ziua rezervării"
 }
