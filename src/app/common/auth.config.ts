@@ -7,5 +7,5 @@ interface AuthConfiguration {
 export const myConfig: AuthConfiguration = {
   clientID: 'zAVnpSCw0ZFgIFGR6WKBmZfoHjJZiCY4',
   domain: 'stefanavram.eu.auth0.com',
-  callbackURL: 'http://localhost:4200/'
+  callbackURL: 'https://stefanavram.github.io/frontend/'
 };
