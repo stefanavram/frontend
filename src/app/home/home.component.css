@@ -30,4 +30,6 @@ md-sidenav-layout.m2app-dark {
   font-size: 130%;
 }
 
-
+.sebm-google-map-container {
+  height: 300px;
+}

@@ -5,5 +5,5 @@ export interface Reservation {
   persons: number;
   isWarm: boolean;
   name: string;
-
+  tableNumber: number;
 }

@@ -37,15 +37,22 @@
         <carousel [interval]="myInterval" [noWrap]="noWrapSlides">
           <slide *ngFor="let slidez of slides; let index=index"
                  [active]="slidez.active">
-            <img [src]="slidez.image" style="margin:auto;">
+            <img md-card-image [src]="slidez.image" style="margin:auto;">
 
             <div class="carousel-caption">
-              <h4>Slide {{index}}</h4>
               <p>{{slidez.text}}</p>
             </div>
           </slide>
         </carousel>
       </div>
     </div>
+  </md-card>
+  <md-card>
+    <md-card-title>
+      <h3>Restauranto location</h3>
+    </md-card-title>
+    <sebm-google-map [latitude]="45.7461944" [longitude]="21.211781" [zoom]= 13>
+      <sebm-google-map-marker [latitude]="45.7461944" [longitude]="21.211781"></sebm-google-map-marker>
+    </sebm-google-map>
   </md-card>
 </div>

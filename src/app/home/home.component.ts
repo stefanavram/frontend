@@ -11,14 +11,6 @@ import {TranslateService} from 'ng2-translate';
 export class HomeComponent implements OnInit {
 
   images: any[];
-
-  foods: any[] = [
-    {name: 'Pizza', rating: 'Excellent'},
-    {name: 'Burritos', rating: 'Great'},
-    {name: 'French fries', rating: 'Pretty good'},
-  ];
-
-
   public myInterval: number = 5000;
   public noWrapSlides: boolean = false;
   public slides: Array<any> = [];
@@ -26,7 +18,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private translate: TranslateService) {
     //adding slides for carousel
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 3; i++) {
       this.addSlide();
     }
 
@@ -37,8 +29,8 @@ export class HomeComponent implements OnInit {
     this.images.push({
       source: 'assets/images/pepperoni.png',
       alt: 'Description for Image 1',
-      title: 'Title 1'
-    });
+    title: 'Title 1'
+  });
   }
 
 
@@ -46,8 +38,7 @@ export class HomeComponent implements OnInit {
     let newWidth = 600 + this.slides.length + 1;
     this.slides.push({
       image: `//placekitten.com/${newWidth}/300`,
-      text: `${['More', 'Extra', 'Lots of', 'Surplus'][this.slides.length % 4]}
-      ${['Cats', 'Kittys', 'Felines', 'Cutes'][this.slides.length % 4]}`
+      text: `${['Excellent', 'Great', 'Pretty good'][this.slides.length % 3]}`
     });
   }
 

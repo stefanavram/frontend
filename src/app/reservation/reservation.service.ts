@@ -7,7 +7,7 @@ import {RestService} from "../common/rest.service";
 @Injectable()
 export class ReservationService extends RestService {
 
-  private _url: string;
+  private _url: string = 'https://server-restauranto.herokuapp.com/rest/pizzas';
 
   constructor(private _http: Http,
               @Optional()
@@ -37,7 +37,7 @@ export class ReservationService extends RestService {
   }
 
   addReservation(reservation: Reservation): Promise<Reservation> {
-    this._url = '/addReservation/' + reservation.name;
+    this._url =  this._url+ '/addReservation/' + reservation.name;
     return this.putData(JSON.stringify(reservation));
   }
 

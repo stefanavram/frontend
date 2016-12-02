@@ -6,7 +6,7 @@ import {MaterialModule} from "@angular/material";
 import {Ng2BootstrapModule} from "ng2-bootstrap";
 import {CommonModule} from "@angular/common";
 import {TranslateModule} from "ng2-translate";
-import {MessagesModule,CalendarModule} from 'primeng/primeng';
+import {MessagesModule,CalendarModule,GrowlModule} from 'primeng/primeng';
 import {ReservationService} from "./reservation.service";
 
 @NgModule({
@@ -17,7 +17,8 @@ import {ReservationService} from "./reservation.service";
     Ng2BootstrapModule,
     TranslateModule,
     MessagesModule,
-    CalendarModule
+    CalendarModule,
+    GrowlModule
   ],
   providers:[
     ReservationService

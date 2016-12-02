@@ -26,11 +26,10 @@ export class Auth {
     this.userProfile = JSON.parse(localStorage.getItem('profile'));
 
     if (result && result.idToken) {
-      this.auth0.on("authenticated", (authResult) => {
-        localStorage.setItem('id_token', authResult.idToken);
+       localStorage.setItem('id_token', result.idToken);
 
         // Fetch profile information
-        this.auth0.getProfile(authResult.idToken, (error, profile) => {
+        this.auth0.getProfile(result.idToken, (error, profile) => {
           if (error) {
             // Handle error
             alert(error);
@@ -40,7 +39,6 @@ export class Auth {
           localStorage.setItem('profile', JSON.stringify(profile));
           this.userProfile = profile;
         });
-      });
       this.router.navigate(['/home']);
     }
     else if (result && result.error) {

@@ -13,6 +13,7 @@ import {TranslateService} from "ng2-translate";
 export class ReservationComponent implements OnInit {
 
   private msgs: Message[] = [];
+  private messages: Message[] = [];
   private reservation: Reservation;
 
   constructor(private auth: Auth,
@@ -21,7 +22,10 @@ export class ReservationComponent implements OnInit {
     if (!auth.authenticated()) {
       this.notLogedIn();
     }
-    this.reservation = <Reservation>{};
+    else {
+      this.reservation = <Reservation>{};
+      this.reservation.name = this.auth.userProfile["given_name"];
+    }
   }
 
   notLogedIn() {
@@ -36,11 +40,10 @@ export class ReservationComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.auth.userProfile) {
-      console.log(this.auth.userProfile);
-    }
-
     this.reservation.createdOn = new Date();
     console.log(this.reservation);
+    // this.reservationService.addReservation(this.reservation);
+    this.messages.push({severity: 'success', summary: 'Success Message', detail: 'Order submitted'});
+
   }
 }
